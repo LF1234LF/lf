@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bb.css">
+    <title>灵风个人引导页</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gradient-start: #67e8f9;
+            --gradient-end: #d946ef;
+            --nav-bg: rgba(255, 255, 255, 0.1);
+            --nav-hover: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: inherit;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.7;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .running-time {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        .time-unit {
+            display: inline-block;
+            margin: 0 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .time-unit::after {
+            content: ':';
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        .time-unit:last-child::after {
+            display: none;
+        }
+
+        .time-value {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to bottom, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* 新的导航栏样式 */
+        .nav-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            z-index: 1000;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: translateX(-100%);
+        }
+
+        .nav-link:hover::before {
+            animation: shine 1.5s;
+        }
+
+        @keyframes shine {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                bottom: 1rem;
+                width: 90%;
+            }
+
+            .nav-link {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .time-value {
+                font-size: 2rem;
+            }
+
+            .avatar {
+                width: 150px;
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        /* 之前的样式保持不变 */
+        /* 新增的内容区域样式 */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .page {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 导航栏样式保持不变 */
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="marquee"> <span>欢迎进入灵风个人引导页，官方群:1005379098</span> </div>
+    </header>
+    <main>
+        <div class="profile-container"> <img src="icon.png" alt="灵风头像" class="avatar"> </div>
+        <h1>灵风</h1>
+        <p class="subtitle">个人引导页</p>
+        <h4>手握日月摘星辰，世间无我这般人--灵风.</h4>
+        <div class="running-time">
+            <div class="time-unit"> <span class="time-value" id="days">00</span> <span class="time-label">天</span> </div>
+            <div class="time-unit"> <span class="time-value" id="hours">00</span> <span class="time-label">时</span> </div>
+            <div class="time-unit"> <span class="time-value" id="minutes">00</span> <span class="time-label">分</span> </div>
+            <div class="time-unit"> <span class="time-value" id="seconds">00</span> <span class="time-label">秒</span> </div>
+        </div>
+    </main>
+    <nav class="nav-container">
+        <ul class="nav-list">
+            <li class="nav-item"> <a href="#" class="nav-link" data-section="home"> <i class="fas fa-home nav-icon"></i> <span>主页</span> </a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-section="music"> <i class="fas fa-music nav-icon"></i> <span>音乐</span> </a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-section="search"> <i class="fas fa-search nav-icon"></i> <span>搜索</span> </a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-section="tools"> <i class="fas fa-tools nav-icon"></i> <span>更多</span> </a> </li>
+        </ul>
+    </nav>
+    <div class="content-container">
+        <div class="page active" id="home">
+            <h2>主页内容</h2>
+            <p>欢迎来到灵风的主页！</p>
+            <h4>开发者:灵风</h4>
+            <h4>建立于:2025年1月13日</h4>
+        </div>
+        <div class="page" id="music">
+            <h2>点击自动跳转</h2>
+       <button type="submit"><a href="https://www.yyssq.cn/">点击跳转</a></button
+        </div>
+        <div class="page" id="search">
+        
+           
+                <style>
+        /* 简单的样式来区分不同的搜索引擎表单 */
+        form {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 百度搜索 -->
+    <form action="https://www.baidu.com/s" method="get" target="_blank">
+        <h3>百度搜索</h3>
+        <input type="text" name="wd" placeholder="输入关键词搜索...">
+        <button type="submit">搜索</button>
+    </form>
+
+    <!-- 360搜索 -->
+    <form action="https://www.so.com/s" method="get" target="_blank">
+        <h3>360搜索</h3>
+        <input type="text" name="q" placeholder="输入关键词搜索...">
+        <button type="submit">搜索</button>
+    </form>
+
+    <!-- 谷歌搜索 -->
+    <form action="https://www.google.com/search" method="get" target="_blank">
+        <h3>谷歌搜索</h3>
+        <input type="text" name="q" placeholder="输入关键词搜索...">
+        <button type="submit">搜索</button>
+    </form>
+
+    <!-- 必应搜索 -->
+    <form action="https://www.bing.com/search" method="get" target="_blank">
+        <h3>必应搜索</h3>
+        <input type="text" name="q" placeholder="输入关键词搜索...">
+        <button type="submit">搜索</button>
+    </form>
+
+    <!-- 搜狗搜索 -->
+    <form action="https://www.sogou.com/web" method="get" target="_blank">
+        <h3>搜狗搜索</h3>
+        <input type="text" name="query" placeholder="输入关键词搜索...">
+        <button type="submit">搜索</button>
+    </form>
+
+    <!-- 知乎搜索 -->
+    <form action="https://www.zhihu.com/search" method="get" target="_blank">
+        <h3>知乎搜索</h3>
+        <input type="text" name="q" placeholder="输入关键词搜索...">
+        <button type="submit">搜索</button>
+    </form>
+
+    <!-- GitHub搜索 -->
+    <form action="https://github.com/search" method="get" target="_blank">
+        <h3>GitHub搜索</h3>
+        <input type="text" name="q" placeholder="输入关键词搜索...">
+        <button type="submit">搜索</button>
+    </form>
+
+    <!-- 头条搜索 -->
+    <form action="https://www.toutiao.com/search" method="get" target="_blank">
+        <h3>头条搜索</h3>
+        <input type="text" name="keyword" placeholder="输入关键词搜索...">
+        <button type="submit">搜索</button>
+    </form>
+        </div>
+        <div class="page" id="tools">
+            <h2>点击跳转</h2>
+                   <button type="submit"><a href="ml.html">点击跳转</a></button>
+        </div>
+    </div>
+    <script>
+        // 设置网站创建时间 
+        const creationDate = new Date('2025-01-12T00:00:00'); function updateRunningTime() { const now = new Date(); const diff = now - creationDate; const days = Math.floor(diff / (1000 * 60 * 60 * 24)); const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((diff % (1000 * 60)) / 1000); document.getElementById('days').textContent = days.toString().padStart(2, '0'); document.getElementById('hours').textContent = hours.toString().padStart(2, '0'); document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0'); document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0'); } setInterval(updateRunningTime, 1000); updateRunningTime();
+         // 导航栏切换功能
+          document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', function(e) { e.preventDefault(); const section = this.getAttribute('data-section'); document.querySelector('.page.active').classList.remove('active'); document.getElementById(section).classList.add('active'); }); }); 
+          // 导航栏动画效果 
+          document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('mouseenter', function() { this.style.transform = 'translateY(-3px)'; }); link.addEventListener('mouseleave', function() { this.style.transform = 'translateY(0)'; }); }); 
+    </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"> </script>
+    <script src="https://myhkw.cn/player/js/player.js" id="myhk" key="demo" skin="pinkcat" m="1"> </script>
+</body>
+
+</html>

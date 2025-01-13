@@ -1,0 +1,23 @@
+{
+    "appName": "测试",
+    "appIconPath": "icon.png",
+    "splashPath": "favicon.png",
+    "packageName": "com.mycomapny.mywebapp",
+    "versionName": "1.0.0",
+    "versionCode": 1,
+    "isFullscreen": false,
+    "isHideTitleBar": true,
+    "titleBarBackgroundColor": "#3F51B5",
+    "isAllowLongClick": true,
+    "isShowLoadingUI": true,
+    "isAllowZoom": true,
+    "isPCMode": false,
+    "isAllowAutoplay": true,
+    "homePage": "index.html",
+    "withPHPEnv": false,
+    "PHPPort": 57249,
+    "isAllowSwipeRefresh": true,
+    "isAllowCamera": false,
+    "isAllowMicrophone": false,
+    "screenRotationMethod": 0
+}
