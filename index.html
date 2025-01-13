@@ -52,8 +52,13 @@
         }
 
         @keyframes marquee {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-100%, 0);
+            }
         }
 
         main {
@@ -212,12 +217,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
+            background: linear-gradient(120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent);
             transform: translateX(-100%);
         }
 
@@ -259,6 +262,7 @@
                 font-size: 2rem;
             }
         }
+
         /* 之前的样式保持不变 */
         /* 新增的内容区域样式 */
         .content-container {
@@ -299,18 +303,26 @@
         <p class="subtitle">个人引导页</p>
         <h4>手握日月摘星辰，世间无我这般人--灵风.</h4>
         <div class="running-time">
-            <div class="time-unit"> <span class="time-value" id="days">00</span> <span class="time-label">天</span> </div>
-            <div class="time-unit"> <span class="time-value" id="hours">00</span> <span class="time-label">时</span> </div>
-            <div class="time-unit"> <span class="time-value" id="minutes">00</span> <span class="time-label">分</span> </div>
-            <div class="time-unit"> <span class="time-value" id="seconds">00</span> <span class="time-label">秒</span> </div>
+            <div class="time-unit"> <span class="time-value" id="days">00</span> <span class="time-label">天</span>
+            </div>
+            <div class="time-unit"> <span class="time-value" id="hours">00</span> <span class="time-label">时</span>
+            </div>
+            <div class="time-unit"> <span class="time-value" id="minutes">00</span> <span class="time-label">分</span>
+            </div>
+            <div class="time-unit"> <span class="time-value" id="seconds">00</span> <span class="time-label">秒</span>
+            </div>
         </div>
     </main>
     <nav class="nav-container">
         <ul class="nav-list">
-            <li class="nav-item"> <a href="#" class="nav-link" data-section="home"> <i class="fas fa-home nav-icon"></i> <span>主页</span> </a> </li>
-            <li class="nav-item"> <a href="#" class="nav-link" data-section="music"> <i class="fas fa-music nav-icon"></i> <span>音乐</span> </a> </li>
-            <li class="nav-item"> <a href="#" class="nav-link" data-section="search"> <i class="fas fa-search nav-icon"></i> <span>搜索</span> </a> </li>
-            <li class="nav-item"> <a href="#" class="nav-link" data-section="tools"> <i class="fas fa-tools nav-icon"></i> <span>更多</span> </a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-section="home"> <i class="fas fa-home nav-icon"></i>
+                    <span>主页</span> </a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-section="music"> <i
+                        class="fas fa-music nav-icon"></i> <span>音乐</span> </a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-section="search"> <i
+                        class="fas fa-search nav-icon"></i> <span>搜索</span> </a> </li>
+            <li class="nav-item"> <a href="#" class="nav-link" data-section="tools"> <i
+                        class="fas fa-tools nav-icon"></i> <span>更多</span> </a> </li>
         </ul>
     </nav>
     <div class="content-container">
@@ -320,99 +332,84 @@
             <h4>开发者:灵风</h4>
             <h4>建立于:2025年1月13日</h4>
         </div>
+
         <div class="page" id="music">
             <h2>点击自动跳转</h2>
-       <button type="submit"><a href="https://www.yyssq.cn/">点击跳转</a></button
+            <button type="submit"><a href="https://www.yyssq.cn/">点击跳转</a></button>
         </div>
+
         <div class="page" id="search">
-        
-           
-                <style>
-        /* 简单的样式来区分不同的搜索引擎表单 */
-        form {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        form h3 {
-            margin-top: 0;
-        }
-    </style>
-</head>
-<body>
+            <!-- 百度搜索 -->
+            <form action="https://www.baidu.com/s" method="get" target="_blank">
+                <h3>百度搜索</h3>
+                <input type="text" name="wd" placeholder="输入关键词搜索...">
+                <button type="submit">搜索</button>
+            </form>
 
-    <!-- 百度搜索 -->
-    <form action="https://www.baidu.com/s" method="get" target="_blank">
-        <h3>百度搜索</h3>
-        <input type="text" name="wd" placeholder="输入关键词搜索...">
-        <button type="submit">搜索</button>
-    </form>
+            <!-- 360搜索 -->
+            <form action="https://www.so.com/s" method="get" target="_blank">
+                <h3>360搜索</h3>
+                <input type="text" name="q" placeholder="输入关键词搜索...">
+                <button type="submit">搜索</button>
+            </form>
 
-    <!-- 360搜索 -->
-    <form action="https://www.so.com/s" method="get" target="_blank">
-        <h3>360搜索</h3>
-        <input type="text" name="q" placeholder="输入关键词搜索...">
-        <button type="submit">搜索</button>
-    </form>
+            <!-- 谷歌搜索 -->
+            <form action="https://www.google.com/search" method="get" target="_blank">
+                <h3>谷歌搜索</h3>
+                <input type="text" name="q" placeholder="输入关键词搜索...">
+                <button type="submit">搜索</button>
+            </form>
 
-    <!-- 谷歌搜索 -->
-    <form action="https://www.google.com/search" method="get" target="_blank">
-        <h3>谷歌搜索</h3>
-        <input type="text" name="q" placeholder="输入关键词搜索...">
-        <button type="submit">搜索</button>
-    </form>
+            <!-- 必应搜索 -->
+            <form action="https://www.bing.com/search" method="get" target="_blank">
+                <h3>必应搜索</h3>
+                <input type="text" name="q" placeholder="输入关键词搜索...">
+                <button type="submit">搜索</button>
+            </form>
 
-    <!-- 必应搜索 -->
-    <form action="https://www.bing.com/search" method="get" target="_blank">
-        <h3>必应搜索</h3>
-        <input type="text" name="q" placeholder="输入关键词搜索...">
-        <button type="submit">搜索</button>
-    </form>
+            <!-- 搜狗搜索 -->
+            <form action="https://www.sogou.com/web" method="get" target="_blank">
+                <h3>搜狗搜索</h3>
+                <input type="text" name="query" placeholder="输入关键词搜索...">
+                <button type="submit">搜索</button>
+            </form>
 
-    <!-- 搜狗搜索 -->
-    <form action="https://www.sogou.com/web" method="get" target="_blank">
-        <h3>搜狗搜索</h3>
-        <input type="text" name="query" placeholder="输入关键词搜索...">
-        <button type="submit">搜索</button>
-    </form>
+            <!-- 知乎搜索 -->
+            <form action="https://www.zhihu.com/search" method="get" target="_blank">
+                <h3>知乎搜索</h3>
+                <input type="text" name="q" placeholder="输入关键词搜索...">
+                <button type="submit">搜索</button>
+            </form>
 
-    <!-- 知乎搜索 -->
-    <form action="https://www.zhihu.com/search" method="get" target="_blank">
-        <h3>知乎搜索</h3>
-        <input type="text" name="q" placeholder="输入关键词搜索...">
-        <button type="submit">搜索</button>
-    </form>
+            <!-- GitHub搜索 -->
+            <form action="https://github.com/search" method="get" target="_blank">
+                <h3>GitHub搜索</h3>
+                <input type="text" name="q" placeholder="输入关键词搜索...">
+                <button type="submit">搜索</button>
+            </form>
 
-    <!-- GitHub搜索 -->
-    <form action="https://github.com/search" method="get" target="_blank">
-        <h3>GitHub搜索</h3>
-        <input type="text" name="q" placeholder="输入关键词搜索...">
-        <button type="submit">搜索</button>
-    </form>
-
-    <!-- 头条搜索 -->
-    <form action="https://www.toutiao.com/search" method="get" target="_blank">
-        <h3>头条搜索</h3>
-        <input type="text" name="keyword" placeholder="输入关键词搜索...">
-        <button type="submit">搜索</button>
-    </form>
+            <!-- 头条搜索 -->
+            <form action="https://www.toutiao.com/search" method="get" target="_blank">
+                <h3>头条搜索</h3>
+                <input type="text" name="keyword" placeholder="输入关键词搜索...">
+                <button type="submit">搜索</button>
+            </form>
         </div>
+        
         <div class="page" id="tools">
             <h2>点击跳转</h2>
-                   <button type="submit"><a href="ml.html">点击跳转</a></button>
+            <button type="submit"><a href="ml.html">点击跳转</a></button>
         </div>
-    </div>
-    <script>
-        // 设置网站创建时间 
-        const creationDate = new Date('2025-01-12T00:00:00'); function updateRunningTime() { const now = new Date(); const diff = now - creationDate; const days = Math.floor(diff / (1000 * 60 * 60 * 24)); const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((diff % (1000 * 60)) / 1000); document.getElementById('days').textContent = days.toString().padStart(2, '0'); document.getElementById('hours').textContent = hours.toString().padStart(2, '0'); document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0'); document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0'); } setInterval(updateRunningTime, 1000); updateRunningTime();
-         // 导航栏切换功能
-          document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', function(e) { e.preventDefault(); const section = this.getAttribute('data-section'); document.querySelector('.page.active').classList.remove('active'); document.getElementById(section).classList.add('active'); }); }); 
-          // 导航栏动画效果 
-          document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('mouseenter', function() { this.style.transform = 'translateY(-3px)'; }); link.addEventListener('mouseleave', function() { this.style.transform = 'translateY(0)'; }); }); 
-    </script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"> </script>
-    <script src="https://myhkw.cn/player/js/player.js" id="myhk" key="demo" skin="pinkcat" m="1"> </script>
+        <script>
+            // 设置网站创建时间 
+            const creationDate = new Date('2025-01-12T00:00:00'); function updateRunningTime() { const now = new Date(); const diff = now - creationDate; const days = Math.floor(diff / (1000 * 60 * 60 * 24)); const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((diff % (1000 * 60)) / 1000); document.getElementById('days').textContent = days.toString().padStart(2, '0'); document.getElementById('hours').textContent = hours.toString().padStart(2, '0'); document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0'); document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0'); } setInterval(updateRunningTime, 1000); updateRunningTime();
+            // 导航栏切换功能
+            document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', function (e) { e.preventDefault(); const section = this.getAttribute('data-section'); document.querySelector('.page.active').classList.remove('active'); document.getElementById(section).classList.add('active'); }); });
+            // 导航栏动画效果 
+            document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('mouseenter', function () { this.style.transform = 'translateY(-3px)'; }); link.addEventListener('mouseleave', function () { this.style.transform = 'translateY(0)'; }); }); 
+        </script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"> </script>
+        <script src="https://myhkw.cn/player/js/player.js" id="myhk" key="demo" skin="pinkcat" m="1"> </script>
 </body>
 
 </html>
